@@ -22,9 +22,10 @@ Route::get('/posts/{post}', [PublicController::class, 'post'])->name('post');
 Route::get('/users/{user}', [PublicController::class, 'user'])->name('user');
 Route::get('/users/{user}/follow', [\App\Http\Controllers\FollowController::class, 'follow'])->name('user.follow');
 
+
 Route::middleware('auth')->group(function() {
     Route::post('/posts/{post}', [\App\Http\Controllers\CommentController::class, 'store'])->name('post.comment');
-
+    Route::get('/admin/posts/{post}/show', [PostController::class,'show'])->name('admin.posts.show');
     Route::get('/admin/posts', [PostController::class,'index'])->name('admin.posts.index');
     Route::get('/admin/posts/create', [PostController::class,'create'])->name('admin.posts.create');
     Route::post('/admin/posts', [PostController::class,'store'])->name('admin.posts.store');
