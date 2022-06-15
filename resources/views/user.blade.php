@@ -41,9 +41,20 @@
                 @foreach($user->followers as $follower)
                     <li>{{$follower->name}}</li>
                 @endforeach
+
             </ul>
     </div>
+<div class="row row-cols-4">
+    @foreach($user->posts as $post)
+        <div class="col">
+            @include('partials.post-card')
+        </div>
+    @endforeach
 </div>
+
+
+
+
 
 @endsection
 
