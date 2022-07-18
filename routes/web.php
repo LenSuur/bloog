@@ -22,7 +22,6 @@ Route::get('/posts/{post}', [PublicController::class, 'post'])->name('post');
 Route::get('/users/{user}', [PublicController::class, 'user'])->name('user');
 Route::get('/users/{user}/follow', [\App\Http\Controllers\FollowController::class, 'follow'])->name('user.follow');
 
-
 Route::middleware('auth')->group(function() {
     Route::post('/posts/{post}', [\App\Http\Controllers\CommentController::class, 'store'])->name('post.comment');
     Route::get('/admin/posts/{post}/show', [PostController::class,'show'])->name('admin.posts.show');
@@ -37,6 +36,5 @@ Route::middleware('auth')->group(function() {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 Route::get('/sql/user', [PublicController::class, 'hax'])->name('hax');
